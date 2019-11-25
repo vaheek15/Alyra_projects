@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        
+<style>
+       
+
+</style>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+
+    <title>Bitcoin textbook analysis tool</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="Starter%20Template%20for%20Bootstrap_files/bootstrap.css" rel="stylesheet">
+  <body>
+
+  
+        <br>
+        <h1 style="text-align: center">A very naive Bitcoin analysis tool</h1>
+        <br>
+        <br>
+        <br>
+        <div class="row">
+                <div class="col-sm-4">
+                     <div class="floating-card card">
+                           <div class="card-body">
+                                 <h5 class="card-title font-weight-bold">Hexadécimal --> Decimal</h5>
+                                  <p class="card-text">
+                                        Hexadécimal :  <input type="text" value="e.g.: ffff" id="hex1"><br>
+                                        Decimal : <span type="text" id="dec1"></span><br>
+                                    </p>
+                                    <button class="btn btn-primary" id="hex2dec">convertir</button>
+                                </div>
+                             </div>              
+                </div>
+
+                <div class="col-sm-4">
+                        <div class="floating-card card">
+                                <div class="card-body">
+                                      <h5 class="card-title font-weight-bold">Decimal --> Hexadécimal(Big Endian)</h5>
+                                       <p class="card-text">
+                                            Decimal :  <input type="text" value="" id="dec2"><br>
+                                            Hexadécimal  : <span type="text" id="hex2"></span><br>
+                                         </p>
+                                         <button class="btn btn-primary" id="DEC2HEXB">convertir</button>
+                                     </div>
+                                  </div>      
+                </div>
+                
+                <div class="col-sm-4">
+                        <div class="floating-card card">
+                                <div class="card-body">
+                                      <h5 class="card-title font-weight-bold">Little endian hexadecimal --> hexadecimal</h5>
+                                       <p class="card-text">
+                                            Little endian hexadecimal :  <input type="text" value="" id="hexl"><br>
+                                            hexadecimal  : <span type="text" id="hex3"></span><br>
+                                         </p>
+                                         <button class="btn btn-primary" id="hexl2hex">convertir</button>
+                                     </div>
+                                  </div>      
+                </div>
+
+                <div class="col-sm-4">
+                        <div class="floating-card card">
+                                <div class="card-body">
+                                      <h5 class="card-title font-weight-bold">Variable Int --> decimal</h5>
+                                       <p class="card-text">
+                                            Variable Int :  <input type="text" value="" id="varint"><br>
+                                            decimal  : <span type="text" id="dec3"></span><br>
+                                         </p>
+                                         <button class="btn btn-primary" id="varint2dec">convertir</button>
+                                     </div>
+                                  </div>      
+                </div>
+               
+                <div class="col-sm-4">
+                        <div class="floating-card card">
+                                <div class="card-body">
+                                      <h5 class="card-title font-weight-bold">Bits --> Target</h5>
+                                       <p class="card-text">
+                                            Bits :  <input type="text" value="" id="bit"><br>
+                                            Target  : <span type="text" id="target"></span><br>
+                                         </p>
+                                         <button class="btn btn-primary" id="b2t">convertir</button>
+                                     </div>
+                                  </div>      
+                </div>
+
+
+                <div class="col-sm-4">
+                        <div class="floating-card card">
+                                <div class="card-body">
+                                      <h5 class="card-title font-weight-bold">Target --> Difficulty</h5>
+                                       <p class="card-text">
+                                            Target :  <input type="text" value="" id="target2"><br>
+                                            Difficulty  : <span type="text" id="diff"></span><br>
+                                         </p>
+                                         <button class="btn btn-primary" id="t2d">convertir</button>
+                                     </div>
+                                  </div>      
+                </div>
+
+              
+                <div class="col-sm" style="text-align: center">
+                        <div class="floating-card card">
+                                <div class="card-body">
+                                      <h5 class="card-title font-weight-bold">Block fields</h5>
+                                       <p class="card-text">
+                                            Block ID :  <input type="text" value="" id="bid"><br><br>
+                                            
+                                            <button class="btn btn-primary" id="bkinf">getblock Information</button><br><br>
+                                            
+                                            Fields information : <span type="text" id="info"></span><br><br>
+                                         </p>
+                                
+                                         <div class="form-row justify-content-center">
+                                                <div class="form-group col-md-2">
+                                                     <label  class="form-label gras" for="ha">Hash:</label>
+                                                     <input  class="btn-lg form-control" id="ha">
+                                                </div>
+                                                <div class="form-group col-md-2">
+                                                    <label  class="form-label gras" for="hei">Height:</label>
+                                                    <input  class="btn-lg form-control" id="hei">
+                                                </div>
+                                                <div class="form-group col-md-2">
+                                                    <label  class="form-label gras">Chain:</label>
+                                                    <input  class="btn-lg form-control" id="chain">
+                                                    </div>
+                                                <div class="form-group col-md-2">
+                                                    <label  class="form-label gras" for="txnb"># of transactions:</label>
+                                                    <input  class="btn-lg form-control" id="txnb">
+                                                </div>
+                                                <div class="form-group col-md-2">
+                                                        <label class="form-label gras" for="fees">Fees:</label>
+                                                        <input class="btn-lg form-control" id="fees">
+                                                </div>
+                                        
+                                                <div class="form-group col-md-2">
+                                                    <label class="form-label gras" for="size">Size:</label>
+                                                    <input class="btn-lg form-control" id="size">
+                                                </div>
+                                                <div class="form-group col-md-2">
+                                                        <label class="form-label gras">Version:</label>
+                                                        <input class="btn-lg form-control" id="ver">
+                                                </div>
+                                                <div class="form-group col-md-2">
+                                                        <label class="form-label gras">Total:</label>
+                                                        <input class="btn-lg form-control" id="tot">
+                                                </div>
+                                                <div class="form-group col-md-2">
+                                                        <label class="form-label gras">time:</label>
+                                                        <input class="btn-lg form-control" id="times">
+                                                </div>
+                                                <div class="form-group col-md-2">
+                                                        <label class="form-label gras">bits:</label>
+                                                        <input class="btn-lg form-control" id="BIT">
+                                                 </div>
+
+                                                 <div class="form-group col-md-2">
+                                                        <label class="form-label gras">nonce:</label>
+                                                        <input class="btn-lg form-control" id="nonce">
+                                                </div>
+                                                <div class="form-group col-md-2">
+                                                        <label class="form-label gras">Previous block:</label>
+                                                        <input class="btn-lg form-control" id="pblock">
+                                                </div>
+                                                <div class="form-group col-md-2">
+                                                        <label class="form-label gras">Merkle root:</label>
+                                                        <input class="btn-lg form-control" id="mroot">
+                                                </div>
+                                                <div class="form-group col-md-2">
+                                                        <label class="form-label gras">Depth:</label>
+                                                        <input class="btn-lg form-control" id="depth">
+                                                </div>
+                                             
+                                        </div>
+
+                               
+
+
+                                                                    
+                                        
+                                     </div>
+                                  </div>      
+                </div>
+
+      
+                
+
+
+
+
+
+
+        
+    </div>
+  
+           
+        
+
+
+
+
+
+    <script src="Starter%20Template%20for%20Bootstrap_files/jquery-3.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="Starter%20Template%20for%20Bootstrap_files/popper.js"></script>
+    <script src="Starter%20Template%20for%20Bootstrap_files/bootstrap.js"></script>
+
+    <script src="ch1.js"></script>
+    
+  
+
+</body>
+</html>

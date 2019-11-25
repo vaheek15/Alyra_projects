@@ -1,0 +1,15 @@
+body {
+  padding-top: 5rem;
+}
+.starter-template {
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+
+.floating-card {
+    float: left;
+     margin: 15px;
+     max-width: 350px;
+     max-height: auto;
+}
