@@ -17,9 +17,11 @@ contract CagnotteFestival {
   }
 
   function transfererOrga(address orga, uint parts) public {
-      require(estOrga(orga), "Vous n"'etes pas organisteur");
-       organisateurs[msg.sender] -= parts;
-       organisateurs[orga] += parts;
+      require(oraganisateurs[msg.sender] >= parts, "demander une part moins importante!");
+      require(!estOrga(orga), "Vous n"'etes pas organisteur");
+      require(orag != address(0));
+      organisateurs[msg.sender] -= parts;
+      organisateurs[orga] = parts;
   }
 
 
