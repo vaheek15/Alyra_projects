@@ -1,5 +1,5 @@
 //Write your own contracts here. Currently compiles using solc v0.4.15+commit.bbb8e64f.
-pragma solidity ^0.4.26;
+pragma solidity ^0.5.13;
 contract sceneOuverte {
 
 string[12] passagesArtistes;
