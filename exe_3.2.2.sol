@@ -4,6 +4,7 @@ contract CagnotteFestival {
   mapping (address => uint) organisateurs;
   mapping (address => bool) festivaliers;
   string[] private sponsors;
+  uint constant LIMITE = 100;
   uint placesRestantes;
 
   constructor() public {
@@ -48,7 +49,7 @@ contract CagnotteFestival {
 
   function sponsoriser(string memory nom) public payable {
         require(msg.sender != address(0));
-        require(msg.value >= 30 ether && sposors.length <= LIMITE, "Minimum amount to be sponsor is 30 ETH and sponsors limit is reached!");
+        require(msg.value >= 30 ether && sposors.length <= LIMITE, "Minimum amount to be sponsor is 30 ETH and sponsors limit is reached");
         sponsors.push(nom);
   }
 
