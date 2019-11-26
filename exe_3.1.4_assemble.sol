@@ -3,8 +3,22 @@ pragma solidity ^0.4.26;
 contract Assemblee {
     address[] membres;
     string[] descriptionDecisions;
-    uint[] votesPour;
-    uint[] votesContre;
+    uint nomAssemblee[];
+    address[] admins;
+
+    struct Decision {
+      string description;
+      uint votePour;
+      uint voteContre;
+      mapping (address => bool) aVote;
+    }
+    Decision[] public decisions;
+
+    constructor(string nom) {
+      nomAssemblee = nom;
+      admins.push(nomAssemblee);
+
+    }
 
     function rejoindre() public {
         membres.push(msg.sender);
@@ -23,26 +37,26 @@ contract Assemblee {
     }
 
     function proposerDecision(string memory description) public {
-        require (estMembre(msg.sender), "Il faut être membre");
-        descriptionDecisions.push(description);
-        votesPour.push(0);
-        votesContre.push(0);
+        require(estMembre(msg.sender), "Il faut être membre");
+        Decision memory nouvelleDecision = Decision(description,0,0);
+        decisions.push(nouvelleDecision);
     }
 
     function voter(uint indice, bool value) public {
-        require (estMembre(msg.sender), "Il faut être membre");
-        require (descriptionDecisions.length >= indice + 1, "La décision n'existe pas");
+      // Vérifier si l'indice indiqué est correcte
+       require(indice < decisions.length && indice >= 0, "Vérifiez lindice indiqué!");
+        require(estMembre(msg.sender), "Il faut être membre");
+        require(decisions[indice].aVote[msg.sender] != true," Vous avez voté pour cette decision!");
+
         if(value == true){
-            votesPour[indice] += 1;
+            decisions[indice].votesPour++;
         } else if(value == false){
-            votesContre[indice] += 1;
+            decisions[indice].votesContre++;
         }
+        decisions[indice].aVote[msg.sender] = true;
     }
 
     function comptabiliser(uint indice) public view returns (int){
-        require (descriptionDecisions.length >= indice + 1, "La décision n'existe pas");
-        int resultat;
-        resultat = int(votesPour[indice] - votesContre[indice]);
-        return resultat;
+        return int(decisions[indice].votesPour - decisions[indice].votesContre);
     }
 }[
