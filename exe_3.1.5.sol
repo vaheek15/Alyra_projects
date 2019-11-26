@@ -7,13 +7,18 @@ contract Assemblee {
     uint nomAssemblee[];
     address[] private admins;
 
-
     struct Decision {
       string description;
       uint votePour;
       uint voteContre;
       mapping (address => bool) aVote;
     }
+
+    mapping (address => bool) public membres;
+    mapping (address => bool) public admins;
+
+
+
     Decision[] public decisions;
 
     constructor(string memory nom) {
@@ -97,7 +102,7 @@ contract Assemblee {
       delete decisions[indice];
     }
 
-    //Il manque les optionnelles
+    //Il manque les optionnels
 
 
 
