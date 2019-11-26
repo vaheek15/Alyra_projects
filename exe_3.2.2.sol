@@ -48,7 +48,7 @@ contract CagnotteFestival {
 
   function sponsoriser(string memory nom) public payable {
         require(msg.sender != address(0));
-        require(msg.value >= 30 ether, "Minimum amount to be sponsor is 30 ETH");
+        require(msg.value >= 30 ether && sposors.length <= LIMITE, "Minimum amount to be sponsor is 30 ETH and sponsors limit is reached!");
         sponsors.push(nom);
   }
 
