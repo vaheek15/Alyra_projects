@@ -17,3 +17,17 @@ contract Pulsation {
   }
 
 }
+
+contract Pendule  {
+    Pulsation pulse;
+
+    constructor(string memory _message) public {
+        // créer une nouvelle instance Pulsation
+        pulse = new Pulsation(_message);
+    }
+
+    function provoquerUnePulsation() public view returns (string memory){
+        // ajouter un battement
+       return pulse.ajouterBattement();
+    }
+}
