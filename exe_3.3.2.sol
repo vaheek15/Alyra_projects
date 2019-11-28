@@ -1,5 +1,6 @@
 pragma solidity ^0.5.0;
 import "github.com/OpenZeppelin/openzeppelin-solidity/contracts/math/SafeMath.sol";
+
 contract Pulsation {
   using SafeMath for uint
   uint public battement;
