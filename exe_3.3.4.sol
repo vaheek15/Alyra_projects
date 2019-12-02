@@ -19,14 +19,27 @@ contract Pulsation {
 contract Pendule {
 
  string[] public balancier;
- Pulsation tic = new Pulsation("tic");
- Pulsation tac = new Pulsation("tac");
+ Pulsation tic;
+ Pulsation tac;
+ constructor() public {
+         // créer un nouveau contract Pulsation avec le message "tic"
+         tic = new Pulsation("tic");
+         // créer un nouveau contract Pulsation avec le message "tac"
+         tac = new Pulsation("tac");
+     }
+
 
 
  function mouvementsBalancier(uint k) public {
+    bool isTic = true;
     for (uint i =0; i <= k; i++) {
-    balancier.push(tic.ajouterBattement());
-    balancier.push(tac.ajouterBattement());
+      if(isTic){
+        balancier.push(tic.ajouterBattement());
+        isTic = false;
+     }else{
+       balancier.push(tac.ajouterBattement());
+       isTic = true;
+    }
   }
-}
+ }
 }
