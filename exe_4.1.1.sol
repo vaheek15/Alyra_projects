@@ -16,7 +16,7 @@ contract Credibilite {
    }
 
    function transfer(address destinataire, uint256 valeur) public{
-       require(cred[msg.sender] > valeur, "Pas assez de creds);
+       require(cred[msg.sender] > valeur, "Pas assez de creds");
        // require pour vérifier que le destinataire a bien des creds
        require(cred[destinataire] > 0);
 
