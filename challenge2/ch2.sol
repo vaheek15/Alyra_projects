@@ -19,6 +19,7 @@ contract marcheIllustrateur {
     address[] addressCandidats;
     string[] nomCandidats;
     bytes32 rendu;
+    address elu;
     mapping (address => bool) candidats;
    }
    enum EtatDemande {OUVERTE, ENCOURS, FERMEE}
@@ -57,7 +58,7 @@ contract marcheIllustrateur {
      require(msg.value >= (_remuneration + (_remuneration*2)/100), "Ajoutez les 2% de frais");
      Demandes memory nouvelleDemande;
      nouvelleDemande.remuneration = _remuneration;
-     nouvelleDemande.delai = _delai * 1 days;
+     nouvelleDemande.delais = _delai * 1 days;
      nouvelleDemande.description = _description;
      nouvelleDemande.etat = EtatDemande.OUVERTE;
      nouvelleDemande.reputationMin = _reputationMin;
@@ -71,15 +72,16 @@ contract marcheIllustrateur {
       require(reputation[msg.sender] > 0, "Vous devez être inscrit");
       demandes[_numOffre].candidats[msg.sender] = true;
       demandes[_numOffre].addressCandidats.push(msg.sender);
-      demandes[_numOffre].nomsCandidats.push(utilisateurs[msg.sender]);
+      demandes[_numOffre].nomCandidats.push(utilisateurs[msg.sender]);
    }
 
 
   function accepterOffre(uint _numOffre, address _elu) public {
-    require(demandes[_numOffre].etat = EtatDemande.OUVERTE, "cette offre nest plus ouverte!");
+    require(demandes[_numOffre].etat == EtatDemande.OUVERTE, "cette offre nest plus ouverte!");
+    demandes[_numOffre].elu = _elu;
     demandes[_numOffre].etat = EtatDemande.ENCOURS;
     demandes[_numOffre].debut = now;
-    demandes[_numOffre].finPrevu =demandes[_numOffre].delai + demandes[_numOffre].debut ;
+    demandes[_numOffre].finPrevu =demandes[_numOffre].delais + demandes[_numOffre].debut ;
 
   }
 
